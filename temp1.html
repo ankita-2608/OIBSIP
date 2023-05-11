@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Convertor</title>
+    <style>
+        body {
+            background: linear-gradient(to right, rgb(59, 227, 199), rgb(64, 168, 212));
+            position: relative;
+        }
+        div {
+            font-size: 20px;
+            padding: 30px;
+            height: 250px;
+            width: 400px;
+            position: absolute;
+            top: 150px;
+            left: 35%;
+            background-color: rgb(246, 152, 184);
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        #button {
+            width: 90%;
+            height: 50px;
+            margin-top: 50px;
+            margin-left: 20px;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 20px;
+        }
+        select {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Degree: <input type="number" id="user_input" autofocus>
+        <br/><br/>
+        Type: <select>
+            <option id="far">Farenhite</option>
+            <option id="cel">Celcius</option>
+            <option id="kel">Kelvin</option>
+        </select><br/><br/>
+        Result: <input type="number" id="answer" readonly>
+        <button id="button">Calculate</button>
+    </div>
+    <script>
+        const user_input = document.querySelector('#user_input');
+        const cel = document.querySelector('#cel');
+        const far = document.querySelector('#far');
+        const kel = document.querySelector('#kel');
+        const answer = document.querySelector('#answer');
+        const button = document.querySelector('#button');
+
+        button.addEventListener('click', () => {
+            let user_input_value = Number(user_input.value);
+            let celVal = (user_input_value * 9 / 5) + 32;
+            let farVal = user_input_value * 1.8 + 32;
+            let kelVal = user_input_value + 273.15;
+
+            if (cel.selected) {
+                answer.value = celVal;
+            } else if (far.selected) {
+                answer.value = farVal;
+            } else if (kelvin.selected) {
+                answer.value = kelVal;
+            }
+        });
+    </script>
+</body>
+</html>
